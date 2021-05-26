@@ -1,7 +1,7 @@
 class SkillModel {
-    constructor(id, curriculumid, description, type) {
+    constructor(id, curriculumId, description, type) {
         this.id = id;
-        this.curriculumid = curriculumid;
+        this.curriculumId = curriculumId;
         this.description = description;
         this.type = type;
     }
@@ -10,8 +10,8 @@ class SkillModel {
         return this.id;
     }
 
-    get curriculumid() {
-        return this.curriculumid;
+    get curriculumId() {
+        return this.curriculumId;
     }
 
     get description() {
