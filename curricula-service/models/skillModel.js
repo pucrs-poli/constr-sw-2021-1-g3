@@ -23,4 +23,4 @@ class SkillModel {
     }
 }
 
-export default CurriculumModel;
+export default SkillModel;
