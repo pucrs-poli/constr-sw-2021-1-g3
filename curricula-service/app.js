@@ -1,11 +1,13 @@
 import express from 'express';
+import mongoose from "mongoose";
 
 class App{
     constructor(port = 5000){
         this.port = port;
         this.server = express();
-        this.includeMiddlewares();
-        this.start();
+        this.useMiddlewares();
+        this.startDatabase('mongodb://localhost:27017/test');
+        this.startServer();
     }
 
     static instance() {
@@ -15,12 +17,16 @@ class App{
         return App._instance;
     }
 
-    includeMiddlewares(){
+    useMiddlewares() {
         this.server.use(express.json());
         this.server.use(express.urlencoded({ extended: false }));
     }
 
-    start() {
+    startDatabase(url) {
+        mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true });
+    }
+
+    startServer() {
         this.server.listen(this.port, () => console.log(`Server now listening at ${this.port}`));
     }
 }

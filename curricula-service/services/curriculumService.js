@@ -1,3 +1,4 @@
+import CurriculumModel from './models/curriculumModel';
 
 /*
 /curricula
@@ -9,17 +10,33 @@
 */
 
 class CurriculumService {
-
+    
     //curricula
-    list(){}
+    all() { }
 
     //curricula/:id
-    searchCurriculum(id){}
+    create(curriculum) {
+        const curriculum = new CurriculumModel({
+            id: 'test'
+        });
+        curriculum.save((err, doc) => {
+            console.log(err);
+        });
+     }
+
+    //curricula/:id
+    update(id, curriculum) { }
+
+    //curricula/:id
+    delete(id) { }
+
+    //curricula/:id
+    search(id) { }
 
     //curricula/:id/skills
-    getCurriculumSkils(id){}
+    skils(id) { }
 
     //curricula/:id/courses
-    getCurriculumCourses(id){}
+    courses(id) { }
 
 }

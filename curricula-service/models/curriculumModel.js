@@ -1,26 +1,10 @@
-class CurriculumModel {
-    constructor(id, name, skills, courses) {
-        this.id = id;
-        this.name = name;
-        this.skills = skills;
-        this.courses = courses;
-    }
+import mongoose, { Schema } from "mongoose";
 
-    get id() {
-        return this.id;
-    }
+const CurriculumSchema = new Schema({
+    id: String,
+    skills: [{}],
+    courses: [{}]
+});
 
-    get name() {
-        return this.name;
-    }
-
-    get skills() {
-        return this.skills;
-    }
-
-    get courses() {
-        return this.courses;
-    }
-}
-
+const CurriculumModel = mongoose.model('Curriculum', CurriculumSchema);
 export default CurriculumModel;
