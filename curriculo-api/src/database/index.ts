@@ -28,4 +28,4 @@ mongoose.connect(mongoConfig.url, mongoConfig.options);
 
 mongoose.Promise = global.Promise;
 
-export default mongoose;
+export default mongoose.connection;
