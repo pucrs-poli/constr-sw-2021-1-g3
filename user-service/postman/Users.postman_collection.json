@@ -6,7 +6,7 @@
 	},
 	"item": [
 		{
-			"name": "userCreation",
+			"name": "createUser",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -32,11 +32,14 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:3000/users",
+					"raw": "ec2-13-58-210-216.us-east-2.compute.amazonaws.com/users",
 					"host": [
-						"localhost"
+						"ec2-13-58-210-216",
+						"us-east-2",
+						"compute",
+						"amazonaws",
+						"com"
 					],
-					"port": "3000",
 					"path": [
 						"users"
 					]
@@ -45,12 +48,9 @@
 			"response": []
 		},
 		{
-			"name": "userAuth",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
+			"name": "authUser",
 			"request": {
-				"method": "GET",
+				"method": "POST",
 				"header": [
 					{
 						"key": "Content-Type",
@@ -63,11 +63,14 @@
 					"raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"ninguemsabe\",\r\n    \"clientId\": \"master-realm\",\r\n    \"secret\": \"8628844d-f100-4481-b3b7-ecd16c72d0d2\"\r\n}"
 				},
 				"url": {
-					"raw": "localhost:3000/auth",
+					"raw": "ec2-13-58-210-216.us-east-2.compute.amazonaws.com/auth",
 					"host": [
-						"localhost"
+						"ec2-13-58-210-216",
+						"us-east-2",
+						"compute",
+						"amazonaws",
+						"com"
 					],
-					"port": "3000",
 					"path": [
 						"auth"
 					]
@@ -76,16 +79,19 @@
 			"response": []
 		},
 		{
-			"name": "usersList",
+			"name": "getUsers",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:3000/users",
+					"raw": "ec2-13-58-210-216.us-east-2.compute.amazonaws.com/users",
 					"host": [
-						"localhost"
+						"ec2-13-58-210-216",
+						"us-east-2",
+						"compute",
+						"amazonaws",
+						"com"
 					],
-					"port": "3000",
 					"path": [
 						"users"
 					]
@@ -94,7 +100,7 @@
 			"response": []
 		},
 		{
-			"name": "userUpdate",
+			"name": "updateUser",
 			"request": {
 				"method": "PUT",
 				"header": [
@@ -109,11 +115,14 @@
 					"raw": "{\r\n    \"id\": \"bd95ef78-6ce9-4f9c-bc7a-0cd5920fa6f8\",\r\n    \"user\": {\r\n        \"id\": \"bd95ef78-6ce9-4f9c-bc7a-0cd5920fa6f8\",\r\n        \"createdTimestamp\": 1620530514542,\r\n        \"username\": \"johndoe\",\r\n        \"enabled\": true,\r\n        \"totp\": false,\r\n        \"emailVerified\": false,\r\n        \"disableableCredentialTypes\": [],\r\n        \"requiredActions\": [],\r\n        \"notBefore\": 0,\r\n        \"access\": {\r\n            \"manageGroupMembership\": true,\r\n            \"view\": true,\r\n            \"mapRoles\": true,\r\n            \"impersonate\": true,\r\n            \"manage\": true\r\n        }\r\n    }\r\n}"
 				},
 				"url": {
-					"raw": "localhost:3000/users",
+					"raw": "ec2-13-58-210-216.us-east-2.compute.amazonaws.com/users",
 					"host": [
-						"localhost"
+						"ec2-13-58-210-216",
+						"us-east-2",
+						"compute",
+						"amazonaws",
+						"com"
 					],
-					"port": "3000",
 					"path": [
 						"users"
 					]
@@ -122,7 +131,7 @@
 			"response": []
 		},
 		{
-			"name": "userPatch",
+			"name": "patchUser",
 			"request": {
 				"method": "PATCH",
 				"header": [
@@ -137,11 +146,66 @@
 					"raw": "{\r\n    \"id\": \"bd95ef78-6ce9-4f9c-bc7a-0cd5920fa6f8\",\r\n    \"user\": {\r\n        \"emailVerified\": true\r\n    }\r\n}"
 				},
 				"url": {
-					"raw": "localhost:3000/users",
+					"raw": "ec2-13-58-210-216.us-east-2.compute.amazonaws.com/users",
 					"host": [
-						"localhost"
+						"ec2-13-58-210-216",
+						"us-east-2",
+						"compute",
+						"amazonaws",
+						"com"
 					],
-					"port": "3000",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getUser",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "ec2-13-58-210-216.us-east-2.compute.amazonaws.com/users/ea263612-84b9-4f0e-a619-03436765ed00",
+					"host": [
+						"ec2-13-58-210-216",
+						"us-east-2",
+						"compute",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"users",
+						"ea263612-84b9-4f0e-a619-03436765ed00"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteUser",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"bd95ef78-6ce9-4f9c-bc7a-0cd5920fa6f8\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "ec2-13-58-210-216.us-east-2.compute.amazonaws.com/users",
+					"host": [
+						"ec2-13-58-210-216",
+						"us-east-2",
+						"compute",
+						"amazonaws",
+						"com"
+					],
 					"path": [
 						"users"
 					]
