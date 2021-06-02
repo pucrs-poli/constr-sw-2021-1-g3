@@ -1,29 +1,42 @@
-import mongoose from 'mongoose';
-import { MongoMemoryServer } from 'mongodb-memory-server';
+import { connect, closeDatabase } from '../tests/db-handler';
+import { createSkill } from '../controllers/skill';
+import { createCurricula, getCurricula } from '../controllers/curricula';
 
-// May require additional time for downloading MongoDB binaries
-jasmine.DEFAULT_TIMEOUT_INTERVAL = 600000;
+beforeAll(async () => connect());
 
-let mongoServer: any;
-const opts = { useMongoClient: true }; // remove this option if you use mongoose 5 and above
+afterAll(async () => closeDatabase());
 
-beforeAll(async () => {
-  mongoServer = new MongoMemoryServer();
-  const mongoUri = await mongoServer.getUri();
-  await mongoose.connect(mongoUri, (err) => {
-    if (err) console.error(err);
+describe('curriculas ', () => {
+  it('can be created correctly', async () => {
+    const skill = await createSkill({
+      description: 'Teste4',
+      type: 'soft',
+    });
+
+    expect(async () =>
+      createCurricula({
+        name: 'Curricula Teste2',
+        skills: [skill.id],
+        courses: ['Teste curso'],
+      })
+    ).not.toThrow();
   });
-});
 
-afterAll(async () => {
-  await mongoose.disconnect();
-  await mongoServer.stop();
-});
+  it('can list all curricula', async () => {
+    const skill = await createSkill({
+      description: 'Teste4',
+      type: 'soft',
+    });
 
-describe('...', () => {
-  it('...', async () => {
-    const User = mongoose.model('User', new mongoose.Schema({ name: String }));
-    const count = await User.count();
-    expect(count).toEqual(0);
+    const curriculum = await createCurricula({
+      name: 'Curricula Teste2',
+      skills: [skill.id],
+      courses: ['Teste curso'],
+    });
+
+    const curricula = await getCurricula();
+
+    // eslint-disable-next-line no-underscore-dangle
+    expect(curricula.map((value: any) => value.id)).toContain(curriculum.id);
   });
 });
