@@ -1,4 +1,4 @@
-import mongoose from '../database';
+import mongoose from 'mongoose';
 
 const CurriculaSchema = new mongoose.Schema({
   name: {
