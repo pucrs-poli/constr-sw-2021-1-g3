@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "rimraf build && tsc",
     "dev": "nodemon src/server.ts",
+    "start": "node build/server.js",
     "test": "jest"
   },
   "keywords": [],
@@ -28,6 +30,7 @@
     "mongoose": "^5.12.12",
     "nodemon": "^2.0.7",
     "prettier": "^2.2.1",
+    "rimraf": "^3.0.2",
     "ts-node": "^9.1.1",
     "typescript": "^4.2.4"
   },
