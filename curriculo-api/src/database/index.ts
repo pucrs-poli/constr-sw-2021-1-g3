@@ -11,12 +11,17 @@ const connection = {
     },
   },
   prod: {
-    url: `mongodb://${process.env.MONGO_DB_USERNAME}:${process.env.MONGO_DB_PASSWORD}@${process.env.MONGO_DB_IP}/curricula`,
+    url: `mongodb://mongo:27017/curricula`,
     options: {
       useNewUrlParser: true,
       useFindAndModify: false,
       useCreateIndex: true,
       useUnifiedTopology: true,
+      auth: {
+        authSource: "admin"
+      },
+      user: "root",
+      pass: "12344321"
     },
   },
 };

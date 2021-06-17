@@ -46,7 +46,13 @@ routes.get('/:id/skills', async (req, res) => {
 
 routes.get('/:id/courses', async (req, res) => {
   try {
-    const response = await axios.get(`/blabla/${req.params.id}`);
+    const curricula = await getCurricula(req.params.id);
+    const courses = curricula.courses.map(function(c:String) {
+      const course = axios.get(`http://18.118.35.192:8081/courses/${c}`);
+      return course;
+    })
+    curricula.courses = courses;
+    const response = curricula;
     res.send(response.data);
   } catch (e) {
     res.status(400).send({ error: 'Error fetching curricula' });
