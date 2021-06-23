@@ -1,0 +1,76 @@
+.disciplines-wrapper {    
+    padding-left: 15%;
+    padding-right: 15%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .header {
+        padding-top: 32px;
+        .title {
+            font-family: 'Barlow';
+            font-weight: 600;
+            font-size: 34px;
+            line-height: 36px;
+        }
+    
+        .sub-title {            
+            font-family: Barlow;
+            font-size: 24px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 24px;
+            letter-spacing: 0.18000000715255737px;
+            text-align: left;
+            color: #5D707F;
+        }   
+    }
+
+    .disciplines-container {
+        .disciplines-list {
+            .discipline-list-item {
+                .discipline {
+                    display: flex;
+                    justify-content: space-between;
+    
+                    .discipline-texts {}
+    
+                    .discipline-name {}
+                
+                    .discipline-description {}
+                
+                    .discipline-actions {
+                        display: flex;
+                        align-items: center;
+                        button {
+                            background-color: transparent;
+                            border: none;
+                            &:focus {
+                                outline: none;
+                            }
+
+                            &:hover {
+                                cursor: pointer;
+                            }
+                        }
+
+                        .discipline-edit-button {
+                            margin-right: 10px;
+                            color: #5D707F;
+                        }
+                
+                        .discipline-delete-button {
+                            color: #B00020;
+                        }   
+                    }
+                }
+            }
+        }
+    }
+
+    .discipline-add-button {
+        position: fixed;
+        bottom: 28px;
+        right: 28px;
+    }
+}
