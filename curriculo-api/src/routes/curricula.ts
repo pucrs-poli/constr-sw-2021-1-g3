@@ -47,13 +47,19 @@ routes.get('/:id/skills', async (req, res) => {
 routes.get('/:id/courses', async (req, res) => {
   try {
     const curricula = await getCurricula(req.params.id);
-    const courses = curricula.courses.map(function(c:String) {
-      const course = axios.get(`http://18.118.35.192:8081/courses/${c}`);
-      return course;
-    })
-    curricula.courses = courses;
+    if (curricula.courses && curricula.courses.lenght) {
+      try {
+        const courses = curricula.courses.map(function (c: String) {
+          const course = axios.get(`http://18.118.35.192:8081/courses/${c}`);
+          return course;
+        })
+        curricula.courses = courses;
+      } catch (e) {
+        res.status(400).send({ error: 'Error fetching curricula - courses api did not answer' });
+      }
+    }
     const response = curricula;
-    res.send(response.data);
+    res.send(response);
   } catch (e) {
     res.status(400).send({ error: 'Error fetching curricula' });
   }
