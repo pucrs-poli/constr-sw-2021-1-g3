@@ -9,10 +9,22 @@ import { MatGridListModule } from '@angular/material/grid-list'
 import { MatCardModule } from '@angular/material/card'
 import { MatIconModule } from '@angular/material/icon'
 import { MatButtonModule } from '@angular/material/button'
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatInputModule } from '@angular/material/input';
+import { FormsModule } from '@angular/forms';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { FormBuilder } from '@angular/forms';
+
+import { CoursesService } from 'src/services/courses.service';
+import { CoursesComponent } from '../pages/courses/courses.component';
+import { CourseRegistrationDialog } from 'src/pages/courses/components/course-registration';
 
 @NgModule({
   declarations: [
     AppComponent,
+    CoursesComponent,
+    CourseRegistrationDialog
   ],
   imports: [
     BrowserModule,
@@ -21,9 +33,16 @@ import { MatButtonModule } from '@angular/material/button'
     MatGridListModule,
     MatCardModule,
     MatIconModule,
+    MatDialogModule,
     MatButtonModule,
+    MatInputModule,
+    FormsModule,
+    FormBuilder,
+    MatExpansionModule,
+    MatToolbarModule
   ],
-  providers: [],
+  entryComponents:[],
+  providers: [CoursesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
