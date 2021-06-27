@@ -18,13 +18,15 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { CoursesService } from 'src/services/courses.service';
 import { CoursesComponent } from '../pages/courses/courses.component';
-import { CourseRegistrationDialog } from 'src/pages/courses/components/course-registration';
+import { CourseRegistrationDialog } from 'src/pages/courses/components/course-registration/course-registration';
+import { LessionRegistrationDialog } from 'src/pages/courses/components/lession-registration/lession-registration';
 
 @NgModule({
   declarations: [
     AppComponent,
     CoursesComponent,
-    CourseRegistrationDialog
+    CourseRegistrationDialog,
+    LessionRegistrationDialog
   ],
   imports: [
     BrowserModule,

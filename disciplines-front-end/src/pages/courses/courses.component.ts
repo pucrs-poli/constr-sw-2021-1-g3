@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ICourse } from 'src/interfaces/course.interface';
 import { CoursesService } from 'src/services/courses.service';
-import { CourseRegistrationDialog } from './components/course-registration';
+import { CourseRegistrationDialog } from './components/course-registration/course-registration';
 
 @Component({
   selector: 'courses',
@@ -24,12 +24,7 @@ export class CoursesComponent {
   openDialog(): void {
     const dialogRef = this.dialog.open(CourseRegistrationDialog, {
       width: '500px',
-      height: '670px',
-      data: {
-        title: this.course.title,
-        descricao: this.course.description,
-        subjects: this.course.subjects
-      }
+      height: '670px'
     });
 
     //dialogRef.afterClosed().subscribe(result => {

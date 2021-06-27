@@ -1,0 +1,20 @@
+<div>
+    <div mat-dialog-content>
+        <h2 mat-dialog-title>Nova aula</h2>
+        <mat-form-field class="lessions">
+            <mat-label>Título</mat-label>
+            <input
+                required
+                class="form-control"
+                type="text"
+                id="title"
+                name="title"
+                matInput>
+        </mat-form-field>
+
+        <div class="lession-actions">
+            <button mat-stroked-button >Ok</button>
+            <button mat-stroked-button color="warn" (click)="onNoClick()">Cancelar</button>
+        </div>
+    </div>
+</div>
