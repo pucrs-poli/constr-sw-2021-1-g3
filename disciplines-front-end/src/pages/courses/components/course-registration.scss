@@ -2,3 +2,22 @@
     display: flex;
     flex-direction: column;
 }
+
+.subject {
+    display: flex;
+    flex-direction: column;
+}
+
+.subject-actions {
+    display: flex;
+    justify-content: space-between;
+}
+
+.add-button {
+    color: rgb(0, 200, 0);
+}
+
+.add-button:hover {
+    transition: 200ms,
+    background-color 200ms rgba(0, 200, 0, 0.431);
+}

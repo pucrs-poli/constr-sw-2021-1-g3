@@ -14,7 +14,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { MatExpansionModule } from '@angular/material/expansion';
-import { FormBuilder } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { CoursesService } from 'src/services/courses.service';
 import { CoursesComponent } from '../pages/courses/courses.component';
@@ -37,7 +37,7 @@ import { CourseRegistrationDialog } from 'src/pages/courses/components/course-re
     MatButtonModule,
     MatInputModule,
     FormsModule,
-    FormBuilder,
+    ReactiveFormsModule,
     MatExpansionModule,
     MatToolbarModule
   ],
