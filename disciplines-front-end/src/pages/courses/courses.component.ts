@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { ICourse } from 'src/interfaces/course.interface';
 import { CoursesService } from 'src/services/courses.service';
-import { CourseRegistrationDialog, ICourse, ISubject } from './components/course-registration';
+import { CourseRegistrationDialog } from './components/course-registration';
 
 @Component({
   selector: 'courses',
@@ -11,13 +12,12 @@ import { CourseRegistrationDialog, ICourse, ISubject } from './components/course
 
 export class CoursesComponent {
   title = 'courses-front-end';
-  disciplinas = [1, 2, 3, 4, 5, 6, 7, 8]
-  
+  courses = [ 0, 0, 0, 0]
   course: ICourse;
 
   constructor(public dialog: MatDialog, private coursesService: CoursesService)
   {
-    this.course = { id:0, title:'', description:'', subjects:[] };
+    this.course = { id: 0, title: '', description: '', subjects: [] };
     //coursesService.getCourses().then(r => console.log(r));
   }
 
@@ -27,7 +27,8 @@ export class CoursesComponent {
       height: '670px',
       data: {
         title: this.course.title,
-        descricao: this.course.description
+        descricao: this.course.description,
+        subjects: this.course.subjects
       }
     });
 

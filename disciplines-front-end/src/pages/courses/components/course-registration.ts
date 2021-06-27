@@ -2,25 +2,7 @@ import {Component, Inject} from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
-import { v4 as uuidv4 } from 'uuid';
-export interface ILession {
-    id: number;
-    name: string;
-}
-
-export interface ISubject {
-    id: number; 
-    title: string;
-    description: string;
-    lessions: ILession[];
-}
-
-export interface ICourse {
-    id: number; 
-    title: string;
-    description: string;
-    subjects: ISubject[];
-}
+import { ICourse } from 'src/interfaces/course.interface';
 
 @Component({
   selector: 'course-registration',
@@ -36,9 +18,6 @@ export class CourseRegistrationDialog {
         private fb: FormBuilder,
         @Inject(MAT_DIALOG_DATA) public data: ICourse)
         {
-            console.log(
-                uuidv4()
-            );
             this.showSubject = false;
             this.subjects = this.fb.group({
                 title: [''],
@@ -50,7 +29,13 @@ export class CourseRegistrationDialog {
         }
 
     onAddSubject(): void {
-        
+
+        const subject = {
+
+        }
+        this.data.subjects.push(
+
+        );
     }
 
     onNoClick(): void {
