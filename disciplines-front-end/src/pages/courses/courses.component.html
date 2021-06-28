@@ -1,50 +1,8 @@
 <div>
-  <mat-toolbar>
-    <button mat-icon-button>
-      <mat-icon>menu</mat-icon>
-    </button>
-    <div class="nav">
-      <button mat-icon-button>
-        <mat-icon>home_outlined</mat-icon>
-      </button>
-      <button mat-icon-button>
-        <mat-icon>account_circle</mat-icon>
-      </button>
-    </div>
-  </mat-toolbar>
-  <div class="disciplines-wrapper">
-    <div class="header">
-      <h1 class="title">Disciplinas</h1>
-      <h3 class="sub-title">Lista de disciplinas</h3>
-    </div>
-    <div class="disciplines-container">
-      <ul class="disciplines-list">
-         <!-- <li class="discipline-list-item"> -->
-          <mat-card class="discipline-list-item" *ngFor="let d of courses">
-            <div class="discipline">
-              <div class="discipline-texts">
-                <h4 class="discipline-name">Disciplina 1</h4>
-                <div class="discipline-description">
-                  <article>
-                    <p>Ola eu sou a disciplina 1</p>
-                  </article>
-                </div>
-              </div>
-              <div class="discipline-actions">
-                <button mat-icon-button class="discipline-edit-button">
-                  <mat-icon>edit</mat-icon>
-                </button>
-                <button mat-icon-button class="discipline-delete-button">
-                  <mat-icon>delete</mat-icon>
-                </button>
-              </div>
-            </div>
-          </mat-card>
-        <!--  </li> -->
-      </ul>
-    </div>
-    <button mat-raised-button (click)="openDialog()" class="discipline-add-button" mat-mini-fab color="">
-      <mat-icon>add</mat-icon>
-    </button>
-  </div>
+  <card-list
+    pageName="Disciplinas"
+    pageDescription="Lista de Disciplinas"
+    [contents]="courses"
+    [onAddContent]="addCourse">
+  </card-list>
 </div>

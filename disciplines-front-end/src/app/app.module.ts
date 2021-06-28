@@ -15,18 +15,24 @@ import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { ReactiveFormsModule } from '@angular/forms';
+import {MatMenuModule} from '@angular/material/menu';
+
 
 import { CoursesService } from 'src/services/courses.service';
 import { CoursesComponent } from '../pages/courses/courses.component';
 import { CourseRegistrationDialog } from 'src/pages/courses/components/course-registration/course-registration';
 import { LessionRegistrationDialog } from 'src/pages/courses/components/lession-registration/lession-registration';
+import { SubjectsComponent } from 'src/pages/subjects/subjects.component';
+import { CardListComponent } from 'src/components/card-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CoursesComponent,
     CourseRegistrationDialog,
-    LessionRegistrationDialog
+    LessionRegistrationDialog,
+    SubjectsComponent,
+    CardListComponent
   ],
   imports: [
     BrowserModule,
@@ -37,6 +43,7 @@ import { LessionRegistrationDialog } from 'src/pages/courses/components/lession-
     MatIconModule,
     MatDialogModule,
     MatButtonModule,
+    MatMenuModule,
     MatInputModule,
     FormsModule,
     ReactiveFormsModule,

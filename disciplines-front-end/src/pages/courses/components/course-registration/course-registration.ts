@@ -4,23 +4,24 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 
 import { ICourse } from 'src/interfaces/course.interface';
 import { ISubject } from 'src/interfaces/subject.interface';
+import { CoursesService } from 'src/services/courses.service';
 import { generateId } from 'src/utils';
 import { LessionRegistrationDialog } from '../lession-registration/lession-registration';
 
 @Component({
   selector: 'course-registration',
   templateUrl: 'course-registration.html',
-  styleUrls: ['./course-registration.scss']
+  styleUrls: ['course-registration.scss']
 })
 export class CourseRegistrationDialog {
-    //subjects: FormGroup;
     showSubject: boolean;
     subject: ISubject;
     course: ICourse;
 
     constructor(
         public dialogRef: MatDialogRef<CourseRegistrationDialog>,
-        private lessionDialog: MatDialog)
+        private lessionDialog: MatDialog,
+        private coursesService: CoursesService)
         //@Inject(MAT_DIALOG_DATA) public data: ICourse)
         {
             this.course = {
@@ -38,13 +39,6 @@ export class CourseRegistrationDialog {
             }
 
             this.showSubject = false;
-            //this.subjects = this.fb.group({
-            //    title: [''],
-            //    description: [''],
-            //    subjects: this.fb.array([
-            //        this.fb.control('')
-            //    ])
-            //});
         }
 
     onAddSubject(): void {
@@ -54,12 +48,14 @@ export class CourseRegistrationDialog {
 
     onAddCourse(): void {
         this.course.id = generateId();
+        this.coursesService.addCourse(this.course);
     }
 
     onAddLession(): void {
         this.lessionDialog.open(LessionRegistrationDialog, {
             width: '300px',
-            height: '200px'
+            height: '200px',
+            data: this.subject.lessions
         });
     }
 

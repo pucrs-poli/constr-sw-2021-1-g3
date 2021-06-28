@@ -9,11 +9,11 @@
                 type="text"
                 id="title"
                 name="title"
-                matInput>
+                matInput [(ngModel)]="lession.name">
         </mat-form-field>
 
         <div class="lession-actions">
-            <button mat-stroked-button >Ok</button>
+            <button mat-stroked-button (click)="onAddLession()">Ok</button>
             <button mat-stroked-button color="warn" (click)="onNoClick()">Cancelar</button>
         </div>
     </div>

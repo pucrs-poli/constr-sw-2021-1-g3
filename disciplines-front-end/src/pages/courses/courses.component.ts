@@ -11,17 +11,15 @@ import { CourseRegistrationDialog } from './components/course-registration/cours
 })
 
 export class CoursesComponent {
-  title = 'courses-front-end';
-  courses = [ 0, 0, 0, 0]
-  course: ICourse;
+  courses: ICourse[];
 
   constructor(public dialog: MatDialog, private coursesService: CoursesService)
   {
-    this.course = { id: 0, title: '', description: '', subjects: [] };
+    this.courses = coursesService.getCourses();
     //coursesService.getCourses().then(r => console.log(r));
   }
 
-  openDialog(): void {
+  addCourse = (): void => {
     const dialogRef = this.dialog.open(CourseRegistrationDialog, {
       width: '500px',
       height: '670px'

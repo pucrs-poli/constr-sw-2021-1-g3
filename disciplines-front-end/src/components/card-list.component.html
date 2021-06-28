@@ -1,0 +1,36 @@
+<div>
+    <div class="card-list-wrapper">
+      <div class="header">
+        <h1 class="title">{{pageName}}</h1>
+        <h3 class="sub-title">{{pageDescription}}</h3>
+      </div>
+      <div class="card-list-container">
+        <ul class="card-list-list">
+            <mat-card class="card-list-list-item" *ngFor="let c of contents">
+              <div class="card-list">
+                <div class="card-list-texts">
+                  <h4 class="card-list-name">{{c.title}}</h4>
+                  <div class="card-list-description">
+                    <article>
+                      <p>{{c.description}}</p>
+                    </article>
+                  </div>
+                </div>
+                <div class="card-list-actions">
+                  <button mat-icon-button class="card-list-edit-button">
+                    <mat-icon>edit</mat-icon>
+                  </button>
+                  <button mat-icon-button class="card-list-delete-button">
+                    <mat-icon>delete</mat-icon>
+                  </button>
+                </div>
+              </div>
+            </mat-card>
+        </ul>
+      </div>
+      <button mat-raised-button (click)="onAddContent()" class="card-list-add-button" mat-mini-fab color="">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+  </div>
+  
