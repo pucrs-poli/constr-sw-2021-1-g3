@@ -5,10 +5,13 @@ import { Component, Input } from "@angular/core";
     templateUrl: './card-list.component.html',
     styleUrls: ['./card-list.component.scss']
   })
-
   export class CardListComponent {
     @Input() public pageName!: string;
     @Input() public pageDescription!: string;
     @Input() public contents!: any[];
     @Input() public onAddContent!: () => void;
+
+    onDeleteContent(id: number): void {
+      this.contents = this.contents.filter(c => c?.id != id);
+    }
   }

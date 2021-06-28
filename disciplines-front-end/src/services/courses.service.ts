@@ -32,6 +32,7 @@ export class CoursesService {
     }
 
     public addCourse(course: ICourse): void {
+        course.id = generateId();
         this.courses.push(course);
     }
     

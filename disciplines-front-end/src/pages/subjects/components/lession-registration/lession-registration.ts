@@ -1,7 +1,8 @@
 import { Component, Inject } from "@angular/core";
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
 import { ILession } from "src/interfaces/lession.interface";
-import { generateId } from "src/utils";
+import { ISubject } from "src/interfaces/subject.interface";
+import { SubjectsService } from "src/services/subjects.service";
 
 @Component({
     selector: 'lession-registration',
@@ -11,19 +12,18 @@ import { generateId } from "src/utils";
 export class LessionRegistrationDialog{
     lession: ILession;
 
-    constructor(
-        public dialogRef: MatDialogRef<LessionRegistrationDialog>,
-        @Inject(MAT_DIALOG_DATA) public data: ILession[]){
+    constructor(public dialogRef: MatDialogRef<LessionRegistrationDialog>,
+        @Inject(MAT_DIALOG_DATA) public data: ISubject,
+        private subjectsService: SubjectsService) {
             this.lession = { id: 0, name: '' }
         }
 
     onAddLession(): void {
-        this.lession.id = generateId();
-        this.data.push(this.lession);
-        this.onNoClick();
+        this.data = this.subjectsService.addLession(this.data, this.lession);
+        this.onCloseDialog();
     }
 
-    onNoClick(): void {
+    onCloseDialog(): void {
         this.dialogRef.close();
     }
 }

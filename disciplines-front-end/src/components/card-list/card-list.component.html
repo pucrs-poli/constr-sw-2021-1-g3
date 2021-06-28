@@ -20,7 +20,7 @@
                   <button mat-icon-button class="card-list-edit-button">
                     <mat-icon>edit</mat-icon>
                   </button>
-                  <button mat-icon-button class="card-list-delete-button">
+                  <button mat-icon-button (click)="onDeleteContent(c.id)"class="card-list-delete-button">
                     <mat-icon>delete</mat-icon>
                   </button>
                 </div>

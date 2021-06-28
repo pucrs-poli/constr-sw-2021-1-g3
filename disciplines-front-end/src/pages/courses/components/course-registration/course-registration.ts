@@ -1,12 +1,11 @@
-import {Component, Inject} from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { Component, Inject } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 import { ICourse } from 'src/interfaces/course.interface';
 import { ISubject } from 'src/interfaces/subject.interface';
 import { CoursesService } from 'src/services/courses.service';
+import { SubjectsService } from 'src/services/subjects.service';
 import { generateId } from 'src/utils';
-import { LessionRegistrationDialog } from '../lession-registration/lession-registration';
 
 @Component({
   selector: 'course-registration',
@@ -15,14 +14,15 @@ import { LessionRegistrationDialog } from '../lession-registration/lession-regis
 })
 export class CourseRegistrationDialog {
     showSubject: boolean;
-    subject: ISubject;
     course: ICourse;
+    subjects: ISubject[];
+    selectedSubjects: number[];
 
     constructor(
         public dialogRef: MatDialogRef<CourseRegistrationDialog>,
-        private lessionDialog: MatDialog,
-        private coursesService: CoursesService)
-        //@Inject(MAT_DIALOG_DATA) public data: ICourse)
+        //private coursesService: CoursesService,
+        @Inject(MAT_DIALOG_DATA) public data: ICourse[],
+        private subjectsService: SubjectsService)
         {
             this.course = {
                 id: 0,
@@ -30,36 +30,21 @@ export class CourseRegistrationDialog {
                 description: '',
                 subjects: []
             };
-
-            this.subject = {
-                id: 0,
-                title: '',
-                description: '',
-                lessions: []
-            }
-
+            this.selectedSubjects = [];
+            this.subjects = subjectsService.getSubjects();
             this.showSubject = false;
         }
 
-    onAddSubject(): void {
-        this.subject.id = generateId();
-        this.course.subjects.push(this.subject);
-    }
-
     onAddCourse(): void {
+        //this.coursesService.addCourse(this.course);
         this.course.id = generateId();
-        this.coursesService.addCourse(this.course);
+        this.course.subjects = this.subjects.filter(s => this.selectedSubjects.includes(s.id));
+        this.data.push(this.course)
+        this.showSubject = !this.showSubject;
+        this.onCloseDialog();
     }
 
-    onAddLession(): void {
-        this.lessionDialog.open(LessionRegistrationDialog, {
-            width: '300px',
-            height: '200px',
-            data: this.subject.lessions
-        });
-    }
-
-    onNoClick(): void {
+    onCloseDialog(): void {
         this.dialogRef.close();
     }
 }

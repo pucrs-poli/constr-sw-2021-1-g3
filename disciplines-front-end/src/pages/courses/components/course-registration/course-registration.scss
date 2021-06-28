@@ -1,29 +1,35 @@
-.mat-dialog-content {
+.course-registration {
+
     display: flex;
     flex-direction: column;
-}
-
-.subject {
-    display: flex;
-    flex-direction: column;
-}
-
-.subject-actions {
-    display: flex;
     justify-content: space-between;
-}
+    height: 99%;
 
-.subject-lession-action{
-    width: 15em;
-    display: flex;
-    justify-content: space-around;
-}
+    .mat-dialog-content {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .courses-actions {
+        display: flex;
+        justify-content: space-between;
+    }
+    .subjects {
+        max-height: 15em;
+        margin-bottom: 10px;
+        overflow-y: auto;
+    }
 
-.add-button {
-    color: rgb(0, 200, 0);
-}
+    .mat-list-base{
+        padding-top: 0 !important;
+    }
 
-.add-button:hover {
-    transition: 200ms,
-    background-color 200ms rgba(0, 200, 0, 0.431);
+    .add-button {
+        color: rgb(0, 200, 0);
+    }
+
+    .add-button:hover {
+        transition: 200ms,
+        background-color 200ms rgba(0, 200, 0, 0.431);
+    }
 }
