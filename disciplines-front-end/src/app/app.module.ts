@@ -22,6 +22,7 @@ import { MatListModule } from '@angular/material/list';
 import { CoursesService } from 'src/services/courses.service';
 import { CoursesComponent } from '../pages/courses/courses.component';
 import { CourseRegistrationDialog } from 'src/pages/courses/components/course-registration/course-registration';
+import { CourseEditDialog } from 'src/pages/courses/components/course-edit/course-edit';
 import { LessionRegistrationDialog } from 'src/pages/subjects/components/lession-registration/lession-registration';
 import { SubjectsComponent } from 'src/pages/subjects/subjects.component';
 import { CardListComponent } from 'src/components/card-list/card-list.component';
@@ -36,7 +37,8 @@ import { SubjectsService } from 'src/services/subjects.service';
     LessionRegistrationDialog,
     SubjectsComponent,
     SubjectRegistrationDialog,
-    CardListComponent
+    CardListComponent,
+    CourseEditDialog
   ],
   imports: [
     BrowserModule,

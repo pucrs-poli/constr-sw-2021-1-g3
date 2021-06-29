@@ -9,42 +9,21 @@ export class CoursesService {
     courses: ICourse[];
 
     constructor() {
-        this.courses = [
-        {
-            id: generateId(),
-            title: 'Banco de dados',
-            description: 'Conceitos de modelagem e implementação de banco de dados',
-            subjects: []
-        },
-        {
-            id: generateId(),
-            title: 'Fundamentos da programação',
-            description: 'Introdução à programação e resolução de problemas',
-            subjects: []
-        },
-        {
-            id: generateId(),
-            title: 'Matemática discreta',
-            description: 'Introdução ao estudo de objectos e estruturas discretas ou finitas',
-            subjects: []
-        }
-        ];
+        this.courses = [];
     }
 
     public addCourse(course: ICourse): void {
-        course.id = generateId();
         this.courses.push(course);
     }
-    
-    public getCourses(): ICourse[] {
-        return this.courses;
-        //return await api.get('/courses', {
-        //    headers: {}
-        //});
+
+    public async getCourses(): Promise<ICourse[]> {
+        return await api.get('/courses', {
+           headers: {}
+        });
     }
 
-    public removeCourse(courseId: number): void {
-        this.courses = this.courses.filter(c => c.id != courseId);
+    public removeCourse(courseId: string): void {
+        this.courses = this.courses.filter(c => c._id != courseId);
     }
 
     public async getCourse(id: string)

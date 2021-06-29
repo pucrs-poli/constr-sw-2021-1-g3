@@ -9,17 +9,17 @@ import { generateId } from 'src/utils';
 
 @Component({
   selector: 'course-registration',
-  templateUrl: 'course-registration.html',
-  styleUrls: ['course-registration.scss']
+  templateUrl: 'course-edit.html',
+  styleUrls: ['course-edit.scss']
 })
-export class CourseRegistrationDialog {
+export class CourseEditDialog {
     showSubject: boolean;
     course: ICourse;
     subjects: ISubject[];
     selectedSubjects: number[];
 
     constructor(
-    public dialogRef: MatDialogRef<CourseRegistrationDialog>,
+    public dialogRef: MatDialogRef<CourseEditDialog>,
       //private coursesService: CoursesService,
       @Inject(MAT_DIALOG_DATA) public data: ICourse,
       private subjectsService: SubjectsService
@@ -30,15 +30,9 @@ export class CourseRegistrationDialog {
         this.showSubject = false;
     }
 
-    onAddCourse(): void {
-        //this.coursesService.addCourse(this.course);
-        this.course.subjects = this.subjects.filter(s => this.selectedSubjects.includes(s.id));
-        this.showSubject = !this.showSubject;
-        this.onCloseDialog();
-    }
-
     onEditCourse(): void {
-
+      //  TODO: send data to api
+      console.log(this.course)
     }
 
     onCloseDialog(): void {

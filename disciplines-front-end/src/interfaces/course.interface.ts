@@ -1,7 +1,7 @@
 import { ISubject } from "./subject.interface";
 
 export interface ICourse {
-    id: number; 
+    _id: string;
     title: string;
     description: string;
     subjects: ISubject[];
