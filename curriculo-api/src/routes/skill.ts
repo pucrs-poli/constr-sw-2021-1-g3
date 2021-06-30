@@ -4,7 +4,7 @@
 */
 
 import express from 'express';
-import { getSkill, updateSkill, createSkill } from '../controllers/skill';
+import { getSkill, updateSkill, createSkill, deleteSkill } from '../controllers/skill';
 
 const routes = express.Router();
 
@@ -20,6 +20,15 @@ routes.get('/', async (req, res) => {
 routes.get('/:id', async (req, res) => {
   try {
     const response = await getSkill(req.params.id);
+    res.send(response);
+  } catch (e) {
+    res.status(400).send({ error: 'Error fetching curricula' });
+  }
+});
+
+routes.delete('/:id', async (req, res) => {
+  try {
+    const response = await deleteSkill(req.params.id);
     res.send(response);
   } catch (e) {
     res.status(400).send({ error: 'Error fetching curricula' });
