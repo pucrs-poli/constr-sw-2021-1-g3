@@ -1,0 +1,83 @@
+.card-list-wrapper {
+    padding-left: 15%;
+    padding-right: 15%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .header {
+        padding-top: 32px;
+        .title {
+            font-family: 'Barlow';
+            font-weight: 600;
+            font-size: 34px;
+            line-height: 36px;
+        }
+
+        .sub-title {
+            font-family: Barlow;
+            font-size: 24px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 24px;
+            letter-spacing: 0.18000000715255737px;
+            text-align: left;
+            color: #5D707F;
+        }
+    }
+
+    .card-list-container {
+        .card-list-list {
+            .card-list-list-item {
+                margin-bottom: 20px;
+                box-shadow: 0px 2px 1px -1px rgb(255 255 255 / 20%), 0px 1px 1px 0px rgb(255 255 255 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%) !important;
+
+                .card-list {
+                    display: flex;
+                    justify-content: space-between;
+
+                    .card-list-texts {
+                        h4{
+                            font-weight: 600;
+                        }
+                    }
+
+                    .card-list-name {}
+
+                    .card-list-description {}
+
+                    .card-list-actions {
+                        display: flex;
+                        align-items: center;
+                        button {
+                            background-color: transparent;
+                            border: none;
+                            &:focus {
+                                outline: none;
+                            }
+
+                            &:hover {
+                                cursor: pointer;
+                            }
+                        }
+
+                        .card-list-edit-button {
+                            margin-right: 10px;
+                            color: #5D707F;
+                        }
+
+                        .card-list-delete-button {
+                            color: #B00020;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .card-list-add-button {
+        position: fixed;
+        bottom: 28px;
+        right: 28px;
+    }
+}

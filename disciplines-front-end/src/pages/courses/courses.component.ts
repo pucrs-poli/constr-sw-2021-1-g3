@@ -2,39 +2,59 @@ import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ICourse } from 'src/interfaces/course.interface';
 import { CoursesService } from 'src/services/courses.service';
-import { CourseRegistrationDialog } from './components/course-registration';
+import { CourseRegistrationDialog } from './components/course-registration/course-registration';
+import {CourseEditDialog} from "./components/course-edit/course-edit";
 
 @Component({
   selector: 'courses',
   templateUrl: './courses.component.html',
   styleUrls: ['./courses.component.scss']
 })
-
 export class CoursesComponent {
-  title = 'courses-front-end';
-  courses = [ 0, 0, 0, 0]
-  course: ICourse;
+  courses: ICourse[];
 
-  constructor(public dialog: MatDialog, private coursesService: CoursesService)
-  {
-    this.course = { id: 0, title: '', description: '', subjects: [] };
-    //coursesService.getCourses().then(r => console.log(r));
+  constructor(public dialog: MatDialog,
+    private coursesService: CoursesService) {
+    this.courses = [];
   }
 
-  openDialog(): void {
+  ngOnInit() {
+    this.getCourses()
+  }
+
+  async getCourses(): Promise<void> {
+    // const response = await this.coursesService.getCourses();
+    // console.log(response)
+
+    this.courses =  [
+      {
+        _id: "60d297edffc1a507a4efbdd1",
+        title: 'Engenharia Orientada a Modelos',
+        description: 'A cadeira nao requer presenca',
+        subjects: [],
+      },
+      {
+        _id: "60d29d2a7f957314ec0663da",
+        title: 'Construcao de Software',
+        description: 'Disciplina semelhante a AGES',
+        subjects: [],
+      }
+    ]
+  }
+
+  addCourse = (): void => {
     const dialogRef = this.dialog.open(CourseRegistrationDialog, {
       width: '500px',
-      height: '670px',
-      data: {
-        title: this.course.title,
-        descricao: this.course.description,
-        subjects: this.course.subjects
-      }
+      height: '620px',
+      data: this.courses
     });
+  }
 
-    //dialogRef.afterClosed().subscribe(result => {
-    //  console.log('The dialog was closed');
-      //this.animal = result;
-    //});
+  editCourse = async (course: ICourse): Promise<void> => {
+    const dialogRef = this.dialog.open(CourseEditDialog, {
+      width: '500px',
+      height: '620px',
+      data: course
+    });
   }
 }

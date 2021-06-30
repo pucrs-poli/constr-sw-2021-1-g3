@@ -1,0 +1,31 @@
+.subject-registration {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 99%;
+    
+    .mat-dialog-content {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .subject-actions {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .subject-lession-action {
+        width: 45%;
+    }
+
+    .lession-list{
+        max-height: 15em;
+        overflow-y: auto;
+    }
+
+    .mat-list-item{
+        p {
+            margin: 0
+        }
+    }
+}

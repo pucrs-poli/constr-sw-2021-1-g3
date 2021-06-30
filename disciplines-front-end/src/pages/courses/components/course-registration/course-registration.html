@@ -1,0 +1,41 @@
+<div class="course-registration">
+    <div>
+        <h1 mat-dialog-title>Cadastro de Disciplina</h1>
+        <div mat-dialog-content>
+            <mat-form-field>
+                <mat-label>Título</mat-label>
+                <input
+                    required
+                    class="form-control"
+                    type="text"
+                    id="title"
+                    name="title"
+                    matInput [(ngModel)]="course.title">
+            </mat-form-field>
+    
+            <mat-form-field>
+                <mat-label>Descrição</mat-label>
+                <textarea 
+                    required
+                    class="form-control"
+                    type="text"
+                    id="description"
+                    name="description"
+                    matInput [(ngModel)]="course.description"></textarea>
+            </mat-form-field>
+        </div>
+
+        <h4 class="select-subject">Selecione a(s) matéria(s) que deseja incluir</h4>
+        <div class="subjects">
+            <mat-selection-list #subs [(ngModel)]="selectedSubjects">
+                <mat-list-option *ngFor="let s of subjects" [value]="s.id">
+                {{s.title}}
+                </mat-list-option>
+            </mat-selection-list>
+        </div>
+    </div>
+    <div class="courses-actions">
+        <button mat-stroked-button (click)="onAddCourse()">Cadastrar</button>
+        <button mat-stroked-button color="warn" (click)="onCloseDialog()">Cancelar</button>
+    </div>
+</div>

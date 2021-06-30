@@ -15,16 +15,30 @@ import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatListModule } from '@angular/material/list';
+
 
 import { CoursesService } from 'src/services/courses.service';
 import { CoursesComponent } from '../pages/courses/courses.component';
-import { CourseRegistrationDialog } from 'src/pages/courses/components/course-registration';
+import { CourseRegistrationDialog } from 'src/pages/courses/components/course-registration/course-registration';
+import { CourseEditDialog } from 'src/pages/courses/components/course-edit/course-edit';
+import { LessionRegistrationDialog } from 'src/pages/subjects/components/lession-registration/lession-registration';
+import { SubjectsComponent } from 'src/pages/subjects/subjects.component';
+import { CardListComponent } from 'src/components/card-list/card-list.component';
+import { SubjectRegistrationDialog } from 'src/pages/subjects/components/subject-registration/subject-registration';
+import { SubjectsService } from 'src/services/subjects.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     CoursesComponent,
-    CourseRegistrationDialog
+    CourseRegistrationDialog,
+    LessionRegistrationDialog,
+    SubjectsComponent,
+    SubjectRegistrationDialog,
+    CardListComponent,
+    CourseEditDialog
   ],
   imports: [
     BrowserModule,
@@ -35,6 +49,8 @@ import { CourseRegistrationDialog } from 'src/pages/courses/components/course-re
     MatIconModule,
     MatDialogModule,
     MatButtonModule,
+    MatMenuModule,
+    MatListModule,
     MatInputModule,
     FormsModule,
     ReactiveFormsModule,
@@ -42,7 +58,7 @@ import { CourseRegistrationDialog } from 'src/pages/courses/components/course-re
     MatToolbarModule
   ],
   entryComponents:[],
-  providers: [CoursesService],
+  providers: [CoursesService, SubjectsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

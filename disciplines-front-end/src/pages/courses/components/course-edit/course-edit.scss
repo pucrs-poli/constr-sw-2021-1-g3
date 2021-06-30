@@ -1,0 +1,35 @@
+.course-registration {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 99%;
+
+    .mat-dialog-content {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .courses-actions {
+        display: flex;
+        justify-content: space-between;
+    }
+    .subjects {
+        max-height: 15em;
+        margin-bottom: 10px;
+        overflow-y: auto;
+    }
+
+    .mat-list-base{
+        padding-top: 0 !important;
+    }
+
+    .add-button {
+        color: rgb(0, 200, 0);
+    }
+
+    .add-button:hover {
+        transition: 200ms,
+        background-color 200ms rgba(0, 200, 0, 0.431);
+    }
+}

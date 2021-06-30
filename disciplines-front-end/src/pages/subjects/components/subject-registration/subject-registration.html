@@ -1,0 +1,45 @@
+<div class="subject-registration">
+    <div>
+        <h1 mat-dialog-title>Cadastro de Matéria</h1>
+        <div mat-dialog-content>
+            <mat-form-field>
+                <mat-label>Título</mat-label>
+                <input
+                    required
+                    class="form-control"
+                    type="text"
+                    id="title"
+                    name="title"
+                    matInput [(ngModel)]="subject.title">
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Descrição</mat-label>
+                <textarea 
+                    required
+                    class="form-control"
+                    type="text"
+                    id="description"
+                    name="description"
+                    matInput [(ngModel)]="subject.description"></textarea>
+            </mat-form-field>
+        </div>
+
+        <mat-list class="lession-list">
+            <mat-list-item *ngFor="let l of subject.lessions">
+                <button mat-icon-button (click)="onRemoveLession(l.id)">
+                    <mat-icon>close</mat-icon>
+                </button>
+                <p>{{l.name}}</p>
+            </mat-list-item>
+        </mat-list>
+        <button mat-stroked-button (click)="onAddLession()">Adicionar tópico</button>
+    </div>
+
+    <div class="subject-actions">
+        <div class="subject-lession-action subject-actions">
+            <button mat-stroked-button (click)="onAddSubject()">Ok</button>
+        </div>
+        <button mat-stroked-button color="warn" (click)="onCloseDialog()">Cancelar</button>
+    </div>  
+</div>

@@ -2,6 +2,7 @@ import { ICourse } from 'src/interfaces/course.interface';
 import { api } from './base';
 
 import { generateId } from '../utils';
+import { ISubject } from 'src/interfaces/subject.interface';
 
 export class CoursesService {
 
@@ -11,14 +12,18 @@ export class CoursesService {
         this.courses = [];
     }
 
-    public addCourse(course: ICourse) {
-        course.id = generateId();
+    public addCourse(course: ICourse): void {
+        this.courses.push(course);
     }
-    
-    public async getCourses() {
+
+    public async getCourses(): Promise<ICourse[]> {
         return await api.get('/courses', {
-            headers: {}
+           headers: {}
         });
+    }
+
+    public removeCourse(courseId: string): void {
+        this.courses = this.courses.filter(c => c._id != courseId);
     }
 
     public async getCourse(id: string)
