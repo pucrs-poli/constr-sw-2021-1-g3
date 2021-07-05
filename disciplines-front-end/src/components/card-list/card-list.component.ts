@@ -12,8 +12,5 @@ import {ICourse} from "../../interfaces/course.interface";
     @Input() public contents!: any[];
     @Input() public onAddContent!: () => void;
     @Input() public onEditContent!: (course: ICourse) => void;
-
-    onDeleteContent(id: number): void {
-      this.contents = this.contents.filter(c => c?.id != id);
-    }
+    @Input() public onDeleteContent!: (course: ICourse) => void;
   }

@@ -1,7 +1,8 @@
-import { generate } from "rxjs";
-import { ILession } from "src/interfaces/lession.interface";
 import { ISubject } from "src/interfaces/subject.interface";
 import { generateId } from "src/utils";
+import {AxiosResponse} from "axios";
+import {api} from "./base";
+import {ICourse} from "../interfaces/course.interface";
 
 export class SubjectsService {
     subjects: ISubject[];
@@ -15,19 +16,19 @@ export class SubjectsService {
         }];
     }
 
-    addLession(subject: ISubject, lession: ILession): ISubject {
-        lession.id = generateId();
-        subject.lessions.push(lession);
-        return subject;
+    addSubject(subject: ISubject): Promise<AxiosResponse<void>> {
+      return api.post('/subjects', subject)
     }
 
-    addSubject(subject: ISubject): ISubject {
-        subject.id = generateId();
-        this.subjects.push(subject);
-        return subject;
+    async getSubjects(): Promise<AxiosResponse<ISubject[]>> {
+        return api.get('/subjects')
     }
 
-    getSubjects(): ISubject[] {
-        return this.subjects;
+    public async getCourseSubjects(course: ICourse): Promise<AxiosResponse<ISubject[]>> {
+      return api.get(`/courses/${course._id}/subjects`)
+    }
+
+    public async editSubject(subject: ISubject): Promise<AxiosResponse<void>> {
+      return api.put(`/subjects/${subject.id}`, subject)
     }
 }

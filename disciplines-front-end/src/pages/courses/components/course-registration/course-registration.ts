@@ -20,25 +20,28 @@ export class CourseRegistrationDialog {
 
     constructor(
     public dialogRef: MatDialogRef<CourseRegistrationDialog>,
-      //private coursesService: CoursesService,
+      private coursesService: CoursesService,
       @Inject(MAT_DIALOG_DATA) public data: ICourse,
       private subjectsService: SubjectsService
     ) {
         this.course = this.data;
         this.selectedSubjects = [];
-        this.subjects = subjectsService.getSubjects();
+        this.subjects = []
         this.showSubject = false;
     }
 
-    onAddCourse(): void {
-        //this.coursesService.addCourse(this.course);
-        this.course.subjects = this.subjects.filter(s => this.selectedSubjects.includes(s.id));
-        this.showSubject = !this.showSubject;
-        this.onCloseDialog();
+    ngOnInit() {
+      this.getCourseSubject()
     }
 
-    onEditCourse(): void {
+    async getCourseSubject() {
+      const { data } = await this.subjectsService.getCourseSubjects(this.course);
+      this.subjects = data
+    }
 
+    async onAddCourse(): Promise<void> {
+        await this.coursesService.addCourse(this.course);
+        return
     }
 
     onCloseDialog(): void {

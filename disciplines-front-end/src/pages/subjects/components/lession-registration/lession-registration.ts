@@ -19,8 +19,7 @@ export class LessionRegistrationDialog{
         }
 
     onAddLession(): void {
-        this.data = this.subjectsService.addLession(this.data, this.lession);
-        this.onCloseDialog();
+      this.data.lessions.push(this.lession)
     }
 
     onCloseDialog(): void {

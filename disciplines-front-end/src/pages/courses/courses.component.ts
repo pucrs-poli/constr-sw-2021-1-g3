@@ -23,23 +23,9 @@ export class CoursesComponent {
   }
 
   async getCourses(): Promise<void> {
-    // const response = await this.coursesService.getCourses();
-    // console.log(response)
-
-    this.courses =  [
-      {
-        _id: "60d297edffc1a507a4efbdd1",
-        title: 'Engenharia Orientada a Modelos',
-        description: 'A cadeira nao requer presenca',
-        subjects: [],
-      },
-      {
-        _id: "60d29d2a7f957314ec0663da",
-        title: 'Construcao de Software',
-        description: 'Disciplina semelhante a AGES',
-        subjects: [],
-      }
-    ]
+    const response = await this.coursesService.getCourses();
+    console.log(response)
+    this.courses = [...response.data]
   }
 
   addCourse = (): void => {
@@ -56,5 +42,9 @@ export class CoursesComponent {
       height: '620px',
       data: course
     });
+  }
+
+  deleteCourse = async (course: ICourse): Promise<void> => {
+    await this.coursesService.removeCourse(course._id)
   }
 }

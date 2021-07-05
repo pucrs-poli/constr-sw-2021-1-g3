@@ -3,6 +3,7 @@ import { api } from './base';
 
 import { generateId } from '../utils';
 import { ISubject } from 'src/interfaces/subject.interface';
+import {AxiosResponse} from "axios";
 
 export class CoursesService {
 
@@ -12,18 +13,24 @@ export class CoursesService {
         this.courses = [];
     }
 
-    public addCourse(course: ICourse): void {
-        this.courses.push(course);
+    public async addCourse(course: ICourse): Promise<AxiosResponse<ICourse>> {
+        return api.post('/courses', course)
     }
 
-    public async getCourses(): Promise<ICourse[]> {
+    public async getCourses(): Promise<AxiosResponse<ICourse[]>> {
         return await api.get('/courses', {
            headers: {}
         });
     }
 
-    public removeCourse(courseId: string): void {
-        this.courses = this.courses.filter(c => c._id != courseId);
+    public async removeCourse(courseId: string) {
+      return api.delete(`/courses/${courseId}`, {
+        headers: {}
+      });
+    }
+
+    public async editCourse(course: ICourse): Promise<void> {
+      return api.put(`/courses/${course._id}`, course);
     }
 
     public async getCourse(id: string)

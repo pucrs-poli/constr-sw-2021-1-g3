@@ -20,19 +20,28 @@ export class CourseEditDialog {
 
     constructor(
     public dialogRef: MatDialogRef<CourseEditDialog>,
-      //private coursesService: CoursesService,
+      private coursesService: CoursesService,
       @Inject(MAT_DIALOG_DATA) public data: ICourse,
       private subjectsService: SubjectsService
     ) {
         this.course = this.data;
         this.selectedSubjects = [];
-        this.subjects = subjectsService.getSubjects();
+        this.subjects = []
         this.showSubject = false;
     }
 
-    onEditCourse(): void {
-      //  TODO: send data to api
-      console.log(this.course)
+    ngOnInit() {
+      this.getCourseSubject()
+    }
+
+    async getCourseSubject() {
+      const { data } = await this.subjectsService.getCourseSubjects(this.course);
+      this.subjects = data
+    }
+
+    async onEditCourse(): Promise<void> {
+      await this.coursesService.editCourse(this.course)
+      this.dialogRef.close();
     }
 
     onCloseDialog(): void {

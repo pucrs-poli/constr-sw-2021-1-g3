@@ -18,7 +18,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatListModule } from '@angular/material/list';
 
-
 import { CoursesService } from 'src/services/courses.service';
 import { CoursesComponent } from '../pages/courses/courses.component';
 import { CourseRegistrationDialog } from 'src/pages/courses/components/course-registration/course-registration';
@@ -27,6 +26,7 @@ import { LessionRegistrationDialog } from 'src/pages/subjects/components/lession
 import { SubjectsComponent } from 'src/pages/subjects/subjects.component';
 import { CardListComponent } from 'src/components/card-list/card-list.component';
 import { SubjectRegistrationDialog } from 'src/pages/subjects/components/subject-registration/subject-registration';
+import { SubjectEditDialog } from 'src/pages/subjects/components/subject-edit/subject-edit';
 import { SubjectsService } from 'src/services/subjects.service';
 
 @NgModule({
@@ -37,6 +37,7 @@ import { SubjectsService } from 'src/services/subjects.service';
     LessionRegistrationDialog,
     SubjectsComponent,
     SubjectRegistrationDialog,
+    SubjectEditDialog,
     CardListComponent,
     CourseEditDialog
   ],
