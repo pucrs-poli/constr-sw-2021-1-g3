@@ -62,7 +62,7 @@ routes.get('/:id/courses', async (req, res) => {
       try {
         const courses = await Promise.all(curricula.courses.map(async function (c: String) {
           const response = await axios
-            .get(`http://3.138.169.204:8081/courses/${c}`);
+            .get(`http://3.133.93.219:8081/courses/${c}`);
           const body = await response.data;
           return body;
         }));
